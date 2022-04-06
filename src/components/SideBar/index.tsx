@@ -6,14 +6,14 @@ export const SideBar = () => {
   return (
     <VStack
       bg="white"
-      w="300px"
+      w="250px"
       px="8"
       h="full"
       style={{ outline: `solid 0.5px #E2E8F0` }}
       spacing="0"
     >
       <VStack w="full" justify="center" h="10vh" align="flex-start">
-        <Text fontWeight="bold" fontSize="2xl" color="blue.600">
+        <Text fontWeight="bold" fontSize="2xl" color="blue.400">
           Task Board
         </Text>
       </VStack>
