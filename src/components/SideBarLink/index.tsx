@@ -22,8 +22,8 @@ export const SideBarLink = ({ label, href, icon }: Props) => {
         transition="all 0.5s"
         w="full"
         justify="flex-start"
-        color={isActive ? "blue.400" : "gray.400"}
-        _hover={{ color: "gray.400" }}
+        color={isActive ? "gray.600" : "gray.300"}
+        _hover={{ color: "gray.300" }}
       >
         <Icon w={4} h={4} as={icon} />
         <Text>{label}</Text>

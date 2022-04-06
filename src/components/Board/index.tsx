@@ -1,4 +1,5 @@
-import { HStack, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import { HStack, IconButton, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import { HiOutlinePlus } from "react-icons/hi";
 
 export const Board = () => {
   return (
@@ -9,8 +10,23 @@ export const Board = () => {
         bg="white"
         style={{ outline: `solid 0.5px #E2E8F0` }}
       >
-        <HStack w="full" bg="blue.500" color="white" p="4">
+        <HStack
+          w="full"
+          bg="gray.600"
+          color="white"
+          p="2"
+          justify="space-between"
+        >
           <Text>Monday</Text>
+
+          <IconButton
+            variant="ghost"
+            icon={<HiOutlinePlus />}
+            color="white"
+            aria-label="Add Task"
+            borderRadius="0"
+            _hover={{ color: "gray.600", bg: "white" }}
+          />
         </HStack>
       </VStack>
 

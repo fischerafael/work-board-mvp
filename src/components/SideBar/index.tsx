@@ -13,7 +13,7 @@ export const SideBar = () => {
       spacing="0"
     >
       <VStack w="full" justify="center" h="10vh" align="flex-start">
-        <Text fontWeight="bold" fontSize="2xl" color="blue.400">
+        <Text fontWeight="bold" fontSize="2xl" color="gray.600">
           Task Board
         </Text>
       </VStack>
