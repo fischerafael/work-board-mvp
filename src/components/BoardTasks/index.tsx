@@ -1,4 +1,5 @@
 import {
+  Button,
   HStack,
   IconButton,
   Input,
@@ -18,6 +19,7 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import { HiOutlinePlus, HiOutlineTrash } from "react-icons/hi";
 import { Task } from "../Task";
 
@@ -25,8 +27,35 @@ interface Props {
   day: "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday";
 }
 
+type Types = "development" | "design" | "meetings" | "other" | "";
+
+interface ITask {
+  task: string;
+  type: Types;
+  duration: number;
+}
+
 export const BoardDayTasks = ({ day }: Props) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
+
+  const [task, setTask] = useState<ITask>({
+    task: "",
+    type: "",
+    duration: 0,
+  });
+
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
+  const handleAddTask = () => {
+    if (!task.task || !task.duration || !task.type) return;
+    setTasks([...tasks, task]);
+    setTask({ task: "", type: "", duration: 0 });
+    onClose();
+  };
+
+  const handleRemoveTask = (taskIndex: number) => {
+    setTasks(tasks.filter((_, index) => index !== taskIndex));
+  };
 
   return (
     <>
@@ -36,10 +65,22 @@ export const BoardDayTasks = ({ day }: Props) => {
           <ModalHeader>{day}</ModalHeader>
           <ModalCloseButton />
           <ModalBody as={VStack} w="full" px="4" py="8">
-            <Input type="text" placeholder="Task" />
+            <Input
+              value={task.task}
+              onChange={(e) => setTask({ ...task, task: e.target.value })}
+              type="text"
+              placeholder="Task"
+            />
 
             <HStack w="full">
-              <NumberInput w="full" step={0.25} min={0} max={8}>
+              <NumberInput
+                value={task.duration}
+                onChange={(value) => setTask({ ...task, duration: +value })}
+                w="full"
+                step={0.25}
+                min={0}
+                max={8}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -47,7 +88,12 @@ export const BoardDayTasks = ({ day }: Props) => {
                 </NumberInputStepper>
               </NumberInput>
 
-              <Select>
+              <Select
+                value={task.type}
+                onChange={(e) =>
+                  setTask({ ...task, type: e.target.value as Types })
+                }
+              >
                 <option disabled hidden value="select">
                   Select a Category
                 </option>
@@ -57,6 +103,10 @@ export const BoardDayTasks = ({ day }: Props) => {
                 <option value="other">Other</option>
               </Select>
             </HStack>
+
+            <Button onClick={handleAddTask} colorScheme="gray" w="full">
+              Add Task
+            </Button>
           </ModalBody>
         </ModalContent>
       </Modal>
@@ -88,21 +138,17 @@ export const BoardDayTasks = ({ day }: Props) => {
         </HStack>
 
         <VStack w="full" spacing="0" h="800px">
-          <Task
-            type="development"
-            duration={5}
-            task="3656 - Design new page with authorities and stuff"
-          />
-          <Task
-            type="design"
-            duration={3}
-            task="3656 - Design new page with authorities and stuff"
-          />
-          <Task
-            type="other"
-            duration={0.25}
-            task="3656 - Design new page with authorities and stuff"
-          />
+          {tasks.map((task, index) => {
+            return (
+              <Task
+                key={index}
+                type={task.type as Types}
+                duration={task.duration}
+                task={task.task}
+                onClick={() => handleRemoveTask(index)}
+              />
+            );
+          })}
         </VStack>
       </VStack>
     </>

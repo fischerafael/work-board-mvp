@@ -4,7 +4,7 @@ import { HiOutlineTrash } from "react-icons/hi";
 
 interface Props {
   task: string;
-  type: "development" | "design" | "meetings" | "other";
+  type: "development" | "design" | "meetings" | "other" | "";
   duration: number;
   onClick?: () => void;
 }
@@ -23,6 +23,7 @@ export const Task = ({ task, type, duration, onClick }: Props) => {
     design: "green.50",
     meetings: "yellow.50",
     other: "red.50",
+    [""]: "white",
   };
 
   return (
@@ -41,7 +42,13 @@ export const Task = ({ task, type, duration, onClick }: Props) => {
       <Text fontSize="xs">
         {`${duration}h`} - {display}
       </Text>
-      <Icon onClick={onClick} w={4} h={4} as={HiOutlineTrash} />
+      <Icon
+        _hover={{ cursor: "pointer", color: "red.600" }}
+        onClick={onClick}
+        w={4}
+        h={4}
+        as={HiOutlineTrash}
+      />
     </HStack>
   );
 };
