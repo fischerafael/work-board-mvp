@@ -46,6 +46,8 @@ export const BoardDayTasks = ({ day }: Props) => {
 
   const [tasks, setTasks] = useState<ITask[]>([]);
 
+  const totalHours = tasks?.reduce((acc, curr) => acc + curr.duration, 0);
+
   const handleAddTask = () => {
     if (!task.task || !task.duration || !task.type) return;
     setTasks([...tasks, task]);
@@ -124,7 +126,9 @@ export const BoardDayTasks = ({ day }: Props) => {
           justify="space-between"
           h="object-fit"
         >
-          <Text>{day}</Text>
+          <Text>
+            {day} ({totalHours}h)
+          </Text>
 
           <IconButton
             variant="ghost"
