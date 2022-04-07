@@ -1,7 +1,7 @@
-import React from "react";
+import { PagePublicHome } from "../src/pages/PagePublicHome";
 
 const index = () => {
-  return <div>index</div>;
+  return <PagePublicHome />;
 };
 
 export default index;

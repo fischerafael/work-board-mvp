@@ -36,6 +36,7 @@ export const Task = ({ task, type, duration, onClick }: Props) => {
       h={height}
       justify="space-between"
       align="flex-start"
+      style={{ outline: `solid 0.5px #E2E8F0` }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
