@@ -15,9 +15,7 @@ export const PagePublicHome = () => {
           RemoteWorkr
         </Text>
 
-        <Button size="sm" colorScheme="cyan">
-          Log In
-        </Button>
+        <Button colorScheme="cyan">Log In</Button>
       </HStack>
 
       <HStack w="full" px="8" justify="space-between">
@@ -28,12 +26,16 @@ export const PagePublicHome = () => {
           justify="center"
           spacing="8"
         >
-          <Text fontSize="5xl">O Melhor Amigo do Programador Remoto</Text>
-          <Text fontSize="xl">
+          <Text color="cyan.300" fontSize="5xl" maxW="450px">
+            O Melhor Amigo do Programador Remoto
+          </Text>
+          <Text fontSize="lg" maxW="300px">
             O RemotWorkr ajuda profissionais de tecnologia a gerenciar suas
             tarefas e criar timesheets com apenas um clique.
           </Text>
-          <Button colorScheme="cyan">Log In</Button>
+          <Button size="lg" colorScheme="cyan">
+            Começar
+          </Button>
         </VStack>
 
         <VStack w="full">
