@@ -19,7 +19,7 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlinePlus, HiOutlineTrash } from "react-icons/hi";
 import { Task } from "../Task";
 
@@ -61,6 +61,24 @@ export const BoardDayTasks = ({ day }: Props) => {
   const handleRemoveTask = (taskIndex: number) => {
     setTasks(tasks.filter((_, index) => index !== taskIndex));
   };
+
+  // loads tasks
+  useEffect(() => {
+    const tasks = localStorage.getItem(day) as string;
+    if (!tasks) return;
+
+    const parsedTasks: ITask[] = JSON.parse(
+      localStorage.getItem(day) as string
+    );
+    if (!parsedTasks.length) return;
+
+    setTasks(parsedTasks);
+  }, []);
+
+  // set tasks to local storage
+  useEffect(() => {
+    localStorage.setItem(day, JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <>
