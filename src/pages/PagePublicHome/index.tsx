@@ -7,7 +7,7 @@ export const PagePublicHome = () => {
         w="full"
         h="10vh"
         borderBottom="1px"
-        borderColor="gray.700"
+        borderColor="gray.800"
         justify="center"
       >
         <HStack px="8" w="full" maxW="container.lg" justify="space-between">
@@ -15,7 +15,9 @@ export const PagePublicHome = () => {
             RemoteWorkr
           </Text>
 
-          <Button colorScheme="cyan">Log In</Button>
+          <Button size="sm" colorScheme="cyan">
+            Log In
+          </Button>
         </HStack>
       </HStack>
 
@@ -43,6 +45,18 @@ export const PagePublicHome = () => {
           <Image src="/developer-custom.svg" />
           <Text>O Melhor Amigo do Programador Remoto</Text>
         </VStack>
+      </HStack>
+
+      <HStack w="full" bg="gray.800" h="20vh" justify="center">
+        <HStack px="8" w="full" maxW="container.lg" justify="space-between">
+          <Text fontWeight="medium" color="cyan.300">
+            RemoteWorkr
+          </Text>
+
+          <VStack>
+            <Text>By Rafael Fischer</Text>
+          </VStack>
+        </HStack>
       </HStack>
     </VStack>
   );
