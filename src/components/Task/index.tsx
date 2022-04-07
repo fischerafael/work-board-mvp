@@ -20,8 +20,8 @@ export const Task = ({ task, type, duration, onClick }: Props) => {
 
   const bgColors = {
     development: "blue.50",
-    design: "green.50",
-    meetings: "yellow.50",
+    design: "purple.50",
+    meetings: "pink.50",
     other: "red.50",
     [""]: "white",
   };

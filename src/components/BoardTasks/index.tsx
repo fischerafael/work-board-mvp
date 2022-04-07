@@ -48,8 +48,11 @@ export const BoardDayTasks = ({ day }: Props) => {
 
   const totalHours = tasks?.reduce((acc, curr) => acc + curr.duration, 0);
 
+  const isDisabled =
+    !task.task || !task.type || !task.duration || task.duration === 0;
+
   const handleAddTask = () => {
-    if (!task.task || !task.duration || !task.type) return;
+    if (isDisabled) return;
     setTasks([...tasks, task]);
     setTask({ task: "", type: "", duration: 0 });
     onClose();
@@ -106,7 +109,13 @@ export const BoardDayTasks = ({ day }: Props) => {
               </Select>
             </HStack>
 
-            <Button onClick={handleAddTask} colorScheme="gray" w="full">
+            <Button
+              isDisabled={isDisabled}
+              onClick={handleAddTask}
+              bg="gray.600"
+              color="white"
+              w="full"
+            >
               Add Task
             </Button>
           </ModalBody>
