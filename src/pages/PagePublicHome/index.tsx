@@ -29,7 +29,7 @@ export const PagePublicHome = () => {
         spacing="8"
       >
         <VStack px="8" w="full" align="flex-start" justify="center" spacing="8">
-          <Text color="cyan.300" fontSize="5xl" maxW="450px">
+          <Text color="cyan.300" fontSize="5xl" maxW="400px" lineHeight="1.25">
             A melhor maneira de gerenciar sua carreira remota.
           </Text>
           <Text fontSize="md" maxW="300px">
@@ -43,7 +43,6 @@ export const PagePublicHome = () => {
 
         <VStack w="full">
           <Image src="/developer-custom.svg" />
-          <Text>O Melhor Amigo do Programador Remoto</Text>
         </VStack>
       </HStack>
 
@@ -54,7 +53,9 @@ export const PagePublicHome = () => {
           </Text>
 
           <VStack>
-            <Text>By Rafael Fischer</Text>
+            <a href="https://github.com/fischerafael" target="_blank">
+              <Text>By Rafael Fischer</Text>
+            </a>
           </VStack>
         </HStack>
       </HStack>
