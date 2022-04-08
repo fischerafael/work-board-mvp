@@ -22,7 +22,7 @@ export const useTasksState = () => {
 
   const [tasks, setTasks] = useRecoilState(taskState);
 
-  console.log(tasks);
+  console.log("TASKS", tasks);
 
   const handleGetTasks = async () => {
     setFetching(true);
@@ -39,6 +39,7 @@ export const useTasksState = () => {
   };
 
   const handleRemoveTask = async (id: string) => {
+    setLoading(true);
     const { data, error } = await db.from("tasks").delete().match({ id: id });
 
     if (error) {

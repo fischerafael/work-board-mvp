@@ -53,7 +53,7 @@ interface TaskProps {
 }
 
 const Task = ({ duration, task, category, onRemove, isLoading }: TaskProps) => {
-  const height = `${duration * 125}px`;
+  const height = `${duration * 100}px`;
 
   return (
     <HStack w="full" justify="space-between" h={height} bg="gray.800">
