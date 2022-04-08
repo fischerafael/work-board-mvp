@@ -1,14 +1,10 @@
 import { Avatar, Button, Flex, HStack, VStack } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+
 import { Board } from "../../components/Board";
 import { SideBar } from "../../components/SideBar";
+import { handleNavigateTo } from "../../utils/handleNavigateTo";
 
 export const PageAppTasks = () => {
-  const { push } = useRouter();
-
-  const handleNavigateTo = (path: string) => {
-    push(path);
-  };
   return (
     <Flex bg="gray.50" h="100vh">
       <SideBar />
