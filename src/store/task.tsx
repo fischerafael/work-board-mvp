@@ -3,12 +3,14 @@ import { atom, useRecoilState } from "recoil";
 import { db } from "../services/config/database";
 import { handleNavigateTo } from "../utils/handleNavigateTo";
 
+const USER_ID = "1FASDF1";
 interface ITask {
   id?: number;
   task: string;
   date: string;
   duration: number;
   category: string;
+  user: string;
 }
 
 export const taskState = atom<ITask>({
@@ -19,6 +21,7 @@ export const taskState = atom<ITask>({
     date: new Date().toISOString(),
     duration: 0,
     category: "",
+    user: USER_ID,
   },
 });
 
@@ -36,6 +39,7 @@ export const useTaskState = () => {
       task: task.task,
       duration: task.duration,
       category: task.category,
+      user: task.user,
     };
 
     setLoading(true);

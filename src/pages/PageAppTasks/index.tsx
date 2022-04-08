@@ -49,7 +49,7 @@ interface TaskProps {
 }
 
 const Task = ({ duration, task, category }: TaskProps) => {
-  const height = `${duration * 100}px`;
+  const height = `${duration * 125}px`;
 
   return (
     <HStack w="full" justify="space-between" h={height} bg="gray.800">
@@ -62,14 +62,21 @@ const Task = ({ duration, task, category }: TaskProps) => {
         h="full"
         justify="space-between"
         align="flex-start"
-        p="2"
+        px="4"
+        py="1"
       >
-        <Text>
+        <Text fontSize="xs">
           {duration}h - {task}
         </Text>
       </HStack>
 
-      <Button h="full" borderRadius="0" colorScheme="cyan" variant="ghost">
+      <Button
+        size="xs"
+        h="full"
+        borderRadius="0"
+        colorScheme="cyan"
+        variant="ghost"
+      >
         Remove
       </Button>
     </HStack>
