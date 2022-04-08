@@ -47,6 +47,10 @@ export const useTasksState = () => {
       return;
     }
 
+    const filteredTasks = tasks.filter((task) => task.id !== parseInt(id));
+    setTasks(filteredTasks);
+    setLoading(false);
+
     alert("Task Removed");
   };
 

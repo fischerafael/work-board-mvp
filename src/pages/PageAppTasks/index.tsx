@@ -6,7 +6,7 @@ import { useTasksState } from "../../store/tasks";
 import { handleNavigateTo } from "../../utils/handleNavigateTo";
 
 export const PageAppTasks = () => {
-  const { tasks, handleRemoveTask } = useTasksState();
+  const { tasks, handleRemoveTask, isLoading } = useTasksState();
 
   return (
     <Flex bg="gray.900" w="full" h="100vh" color="white">
@@ -48,9 +48,10 @@ interface TaskProps {
   category: string;
   id: number;
   onRemove: () => Promise<void>;
+  isLoading: boolean;
 }
 
-const Task = ({ duration, task, category, onRemove }: TaskProps) => {
+const Task = ({ duration, task, category, onRemove, isLoading }: TaskProps) => {
   const height = `${duration * 125}px`;
 
   return (
@@ -79,6 +80,7 @@ const Task = ({ duration, task, category, onRemove }: TaskProps) => {
         colorScheme="cyan"
         variant="ghost"
         onClick={onRemove}
+        isLoading={isLoading}
       >
         Remove
       </Button>
