@@ -1,7 +1,9 @@
 import { Avatar, Button, Flex, HStack, Input, VStack } from "@chakra-ui/react";
 import { InputNumber } from "../../components/InputNumber";
+import { InputSelect } from "../../components/InputSelect";
 import { InputText } from "../../components/InputText";
 import { SideBar } from "../../components/SideBar";
+import { CATEGORY_OPTIONS } from "../../data";
 import { handleNavigateTo } from "../../utils/handleNavigateTo";
 
 export const PageAppTask = () => {
@@ -21,7 +23,7 @@ export const PageAppTask = () => {
           <HStack w="full">
             <InputText label="Date" type="date" />
             <InputNumber label="Duration" step={0.25} min={0} max={8} />
-            <Input placeholder="Category" />
+            <InputSelect label="Category" options={CATEGORY_OPTIONS} />
           </HStack>
 
           <HStack w="full">
