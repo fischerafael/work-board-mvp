@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { atom, useRecoilState } from "recoil";
 import { db } from "../services/config/database";
-import { handleNavigateTo } from "../utils/handleNavigateTo";
 
 interface ITask {
   id?: number;
@@ -39,6 +38,18 @@ export const useTasksState = () => {
     setFetching(false);
   };
 
+  const handleRemoveTask = async (id: string) => {
+    const { data, error } = await db.from("tasks").delete().match({ id: id });
+
+    if (error) {
+      alert("Error removing task");
+      setLoading(false);
+      return;
+    }
+
+    alert("Task Removed");
+  };
+
   useEffect(() => {
     handleGetTasks();
   }, []);
@@ -48,5 +59,6 @@ export const useTasksState = () => {
     isDisabled,
     isFetching,
     tasks,
+    handleRemoveTask,
   };
 };

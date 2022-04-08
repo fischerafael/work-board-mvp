@@ -31,8 +31,6 @@ export const useTaskState = () => {
 
   const [task, setTask] = useRecoilState(taskState);
 
-  console.log(task);
-
   const handleCreateTask = async () => {
     const payload = {
       date: task.date,
@@ -62,8 +60,6 @@ export const useTaskState = () => {
     }
     setDisabled(false);
   }, [task]);
-
-  console.log(isDisabled);
 
   return {
     task,
