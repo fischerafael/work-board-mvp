@@ -38,13 +38,19 @@ const Task = () => {
     <HStack w="full" justify="space-between" h={"60px"} bg="gray.800">
       <VStack h="full" w="4" bg="cyan.300" />
 
-      <HStack w="full" h="full" justify="space-between">
+      <HStack
+        _hover={{ bg: "gray.700" }}
+        cursor="pointer"
+        w="full"
+        h="full"
+        justify="space-between"
+      >
         <Text>1h - Task</Text>
-
-        <Button colorScheme="cyan" variant="ghost">
-          Remove
-        </Button>
       </HStack>
+
+      <Button h="full" borderRadius="0" colorScheme="cyan" variant="ghost">
+        Remove
+      </Button>
     </HStack>
   );
 };
