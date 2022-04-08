@@ -1,4 +1,6 @@
 import { Avatar, Button, Flex, HStack, Input, VStack } from "@chakra-ui/react";
+import { InputNumber } from "../../components/InputNumber";
+import { InputText } from "../../components/InputText";
 import { SideBar } from "../../components/SideBar";
 import { handleNavigateTo } from "../../utils/handleNavigateTo";
 
@@ -14,18 +16,38 @@ export const PageAppTask = () => {
           </Button>
         </HStack>
 
-        <VStack maxW="container.md" w="full">
-          <Input placeholder="Date" />
-          <Input placeholder="Task" />
+        <VStack maxW="container.md" w="full" p="8" bg="white" shadow="md">
+          <InputText label="Task" />
+          <HStack w="full">
+            <InputText label="Date" type="date" />
+            <InputNumber label="Duration" step={0.25} min={0} max={8} />
+            <Input placeholder="Category" />
+          </HStack>
 
           <HStack w="full">
-            <Input placeholder="Pessimistic Estimative" />
-            <Input placeholder="Optimistic Estimative" />
-            <Input placeholder="Realistic Estimative" />
+            <InputNumber
+              label="Pessimistic Estimative"
+              step={0.25}
+              min={0}
+              max={8}
+            />
+            <InputNumber
+              label="Optimistic Estimative"
+              step={0.25}
+              min={0}
+              max={8}
+            />
+            <InputNumber
+              label="Realistic Estimative"
+              step={0.25}
+              min={0}
+              max={8}
+            />
           </HStack>
-          <Input placeholder="Duration" />
-          <Input placeholder="Category" />
-          <Input placeholder="Realistic Estimative" />
+
+          <HStack w="full" justify="flex-end">
+            <Button>Add Task</Button>
+          </HStack>
         </VStack>
       </VStack>
     </Flex>
