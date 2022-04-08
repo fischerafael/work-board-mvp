@@ -53,7 +53,11 @@ export const PagePublicHome = () => {
           </Text>
 
           <VStack>
-            <a href="https://github.com/fischerafael" target="_blank">
+            <a
+              href="https://github.com/fischerafael"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Text>By Rafael Fischer</Text>
             </a>
           </VStack>
