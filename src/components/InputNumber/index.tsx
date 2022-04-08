@@ -6,7 +6,6 @@ import {
   NumberInputProps,
   NumberInputStepper,
 } from "@chakra-ui/react";
-import React from "react";
 
 interface InputNumberProps extends NumberInputProps {}
 
