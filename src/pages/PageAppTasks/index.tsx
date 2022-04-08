@@ -23,9 +23,17 @@ export const PageAppTasks = () => {
         </HStack>
 
         <VStack w="full" spacing="4">
-          <Task />
-          <Task />
-          <Task />
+          {tasks.map((task) => {
+            return (
+              <Task
+                key={task.id}
+                id={task.id!}
+                duration={task.duration}
+                task={task.task}
+                category={task.category}
+              />
+            );
+          })}
         </VStack>
       </VStack>
       {/* <Board /> */}
@@ -33,9 +41,18 @@ export const PageAppTasks = () => {
   );
 };
 
-const Task = () => {
+interface TaskProps {
+  duration: number;
+  task: string;
+  category: string;
+  id: number;
+}
+
+const Task = ({ duration, task, category }: TaskProps) => {
+  const height = `${duration * 100}px`;
+
   return (
-    <HStack w="full" justify="space-between" h={"60px"} bg="gray.800">
+    <HStack w="full" justify="space-between" h={height} bg="gray.800">
       <VStack h="full" w="4" bg="cyan.300" />
 
       <HStack
@@ -44,8 +61,12 @@ const Task = () => {
         w="full"
         h="full"
         justify="space-between"
+        align="flex-start"
+        p="2"
       >
-        <Text>1h - Task</Text>
+        <Text>
+          {duration}h - {task}
+        </Text>
       </HStack>
 
       <Button h="full" borderRadius="0" colorScheme="cyan" variant="ghost">
