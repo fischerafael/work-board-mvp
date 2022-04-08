@@ -31,6 +31,7 @@ export const PageAppTasks = () => {
                 duration={task.duration}
                 task={task.task}
                 category={task.category}
+                isLoading={isLoading}
                 onRemove={() => handleRemoveTask(task.id?.toString()!)}
               />
             );
