@@ -26,8 +26,8 @@ export const InputSelect = ({
   return (
     <FormControl w="full">
       <FormLabel>{label}</FormLabel>
-      <Select {...props}>
-        <option disabled hidden value="select">
+      <Select defaultValue={""} {...props}>
+        <option disabled hidden value="">
           Select a Category
         </option>
         {options.map((option) => {

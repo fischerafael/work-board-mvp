@@ -1,12 +1,17 @@
-import { Avatar, Button, Flex, HStack, Input, VStack } from "@chakra-ui/react";
+import { Avatar, Button, Flex, HStack, VStack } from "@chakra-ui/react";
+
 import { InputNumber } from "../../components/InputNumber";
 import { InputSelect } from "../../components/InputSelect";
 import { InputText } from "../../components/InputText";
 import { SideBar } from "../../components/SideBar";
 import { CATEGORY_OPTIONS } from "../../data";
 import { handleNavigateTo } from "../../utils/handleNavigateTo";
+import { useTaskState } from "../../store/task";
 
 export const PageAppTask = () => {
+  const { task, setTask, handleCreateTask, isDisabled, isLoading } =
+    useTaskState();
+
   return (
     <Flex bg="gray.50" h="100vh">
       <SideBar />
@@ -19,11 +24,32 @@ export const PageAppTask = () => {
         </HStack>
 
         <VStack maxW="container.md" w="full" p="8" bg="white" shadow="md">
-          <InputText label="Task" />
+          <InputText
+            value={task.task}
+            onChange={(e) => setTask({ ...task, task: e.target.value })}
+            label="Task"
+          />
           <HStack w="full">
-            <InputText label="Date" type="date" />
-            <InputNumber label="Duration" step={0.25} min={0} max={8} />
-            <InputSelect label="Category" options={CATEGORY_OPTIONS} />
+            <InputText
+              label="Date"
+              type="date"
+              value={task.date}
+              onChange={(e) => setTask({ ...task, date: e.target.value })}
+            />
+            <InputNumber
+              label="Duration"
+              step={0.25}
+              min={0}
+              max={8}
+              value={task.duration}
+              onChange={(value) => setTask({ ...task, duration: +value })}
+            />
+            <InputSelect
+              label="Category"
+              options={CATEGORY_OPTIONS}
+              value={task.category}
+              onChange={(e) => setTask({ ...task, category: e.target.value })}
+            />
           </HStack>
 
           <HStack w="full">
@@ -48,7 +74,14 @@ export const PageAppTask = () => {
           </HStack>
 
           <HStack w="full" justify="flex-end">
-            <Button>Add Task</Button>
+            <Button
+              isLoading={isLoading}
+              isDisabled={isDisabled}
+              onClick={handleCreateTask}
+              colorScheme="cyan"
+            >
+              Add Task
+            </Button>
           </HStack>
         </VStack>
       </VStack>
